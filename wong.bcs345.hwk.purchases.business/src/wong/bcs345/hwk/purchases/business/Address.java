@@ -143,7 +143,10 @@ public class Address {
 	} 
 	
 	public void ReadJSON(Scanner s) {
+		String json = s.nextLine();
+		Gson gson = new Gson();
 		
+		Address a = gson.fromJson(json, Address.class);
 	}
 	
 	@Override

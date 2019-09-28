@@ -1,7 +1,7 @@
-10
-Maple
-New York
-NY
-12345
-Charger
-5.0
+{
+  "number": "10",
+  "street": "Maple",
+  "city": "New York",
+  "state": "NY",
+  "zip": "12345"
+}

@@ -17,6 +17,8 @@ import wong.bcs345.hwk.purchases.business.*; // * character imports both Address
  */
 public class Main {
 
+	
+	
 	/**
 	 * @param args
 	 */
@@ -35,6 +37,7 @@ public class Main {
 		p.setDescription("Charger");
 		p.setPrice(5.00);
 		
+		// Write to file
 		PrintStream ps;
 		try {
 			ps = new PrintStream("out");
@@ -56,23 +59,34 @@ public class Main {
 			e.printStackTrace();
 		} 
 		
-
-		
 		// Write to JSON file
-		
-		
+		try {
+			PrintStream printStream = new PrintStream("out");
+			a.WriteJSON(printStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		// Read from JSON file
+		try {
+			Scanner scanner = new Scanner(new FileReader("out"));
+			a.ReadJSON(scanner);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		
-		// Call to string and show the string
-		
+		// Call to string and show the string	
 		System.out.println(a.toString());
 		System.out.println(p.toString());
-		// Unit testing
 		
+		// Unit Testing
+		AddressTest addressTest;
+		addressTest = new AddressTest();
+		addressTest.addressTest();
 		
-		
+		ProductTest productTest;
+		productTest = new ProductTest();
+		productTest.productTest();	
 		
 	}
 

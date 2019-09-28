@@ -75,7 +75,10 @@ public class Product {
 	}
 	
 	public void ReadJSON(Scanner s) {
+		String json = s.nextLine();
+		Gson gson = new Gson();
 		
+		Product p = gson.fromJson(json, Product.class);
 	}
 	
 	@Override
