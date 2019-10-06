@@ -1,6 +1,3 @@
-/**
- * 
- */
 package wong.bcs345.hwk.purchases.business;
 
 import java.io.PrintStream;
@@ -10,14 +7,24 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * @author wongn
- *
+ * The Product class contains instance members
+ * that describes an product...
+ * <p>
+ * Contains corresponding accessors/mutators
+ * for each member.
+ * </p>
+ * @author Natalie Wong
+ * @version HW#2
  */
 public class Product {
 
 	private String description;
 	private double price;
 	
+	/**
+	 * Default constructor 
+	 * Sets the values of each member variable to a reasonable default value
+	 */
 	public Product() {
 		description = "N/A";
 		price = 0.00;
@@ -51,16 +58,28 @@ public class Product {
 		this.price = price;
 	}
 	
+	/**
+	 * Write the contents of all member variables to the given instance of PrintStream
+	 * @param ps
+	 */
 	public void Write(PrintStream ps) {
 		ps.println(description);
 		ps.println(price);
 	}
 	
+	/**
+	 * Read the contents of all member variables from the given instance of Scanner
+	 * @param s
+	 */
 	public void Read(Scanner s) {
 		description = s.nextLine();
 		price = s.nextDouble();
 	}
 	
+	/**
+	 * Write the member variables in JSON format to the given PrintStream
+	 * @param ps
+	 */
 	public void WriteJSON(PrintStream ps) {
 		Product p = new Product();
 		p.setDescription(description);
@@ -74,6 +93,10 @@ public class Product {
 		ps.println(jsonString);  		
 	}
 	
+	/**
+	 * Read the contents of all member variables from the given instance of Scanner as JSON
+	 * @param s
+	 */
 	public void ReadJSON(Scanner s) {
 		String json = s.nextLine();
 		Gson gson = new Gson();
@@ -81,6 +104,10 @@ public class Product {
 		Product p = gson.fromJson(json, Product.class);
 	}
 	
+	/**
+	 * Shows descriptive text and data
+	 * It will be used to display an address to the user
+	 */
 	@Override
 	public String toString() {
 		String s = String.format("%s, $%.2f", description, price);

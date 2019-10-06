@@ -1,16 +1,17 @@
-/**
- * 
- */
 package wong.bcs345.hwk.purchases.business;
 
 /**
- * @author wongn
- *
+ * The AddressTest class performs unit tests for each method
+ * <p>
+ * Contains a unit test for each method
+ * </p>
+ * @author Natalie Wong
+ * @version HW#2
  */
 public class AddressTest {
 
 	/**
-	 * Reports pass or fail for each get/set test.
+	 * Reports pass or fail for each get/set test
 	 */
 	public void addressTest() {
 		System.out.println((addressNumberTest()) 
@@ -45,6 +46,10 @@ public class AddressTest {
 				: false);
 	}
 	
+	/**
+	 * Address street test
+	 * @return
+	 */
 	public boolean addressStreetTest() {
 		Address a = new Address();
 		String testStreet = "Maple";
@@ -56,6 +61,10 @@ public class AddressTest {
 				: false);
 	}
 	
+	/**
+	 * Address city test
+	 * @return
+	 */
 	public boolean addressCityTest() {
 		Address a = new Address();
 		String testCity = "New York";
@@ -67,6 +76,10 @@ public class AddressTest {
 				: false);
 	}
 	
+	/**
+	 * Address state test
+	 * @return
+	 */
 	public boolean addressStateTest() {
 		Address a = new Address();
 		String testState = "NY";
@@ -78,6 +91,10 @@ public class AddressTest {
 				: false);
 	}
 	
+	/**
+	 * Address zip test
+	 * @return
+	 */
 	public boolean addressZipTest() {
 		Address a = new Address();
 		String testZip = "10";

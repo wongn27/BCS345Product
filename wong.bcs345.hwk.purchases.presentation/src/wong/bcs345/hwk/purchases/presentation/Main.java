@@ -1,6 +1,3 @@
-/**
- * 
- */
 package wong.bcs345.hwk.purchases.presentation;
 
 import java.io.FileNotFoundException;
@@ -12,14 +9,19 @@ import java.util.Scanner;
 import wong.bcs345.hwk.purchases.business.*; // * character imports both Address and Product classes 
 
 /**
- * @author wongn
- *
+ * The <strong>CustomerDriver</strong> class.
+ * <p>
+ * Reads an input file and writes to an output file.
+ * </p>
+ * 
+ * @author Natalie Wong
+ * @version HW#2
+ * @since Sep 27, 2019
  */
 public class Main {
 
-	
-	
 	/**
+	 * Main entry point of the program
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -75,7 +77,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		// Call to string and show the string	
+		// Call toString and show the string	
 		System.out.println(a.toString());
 		System.out.println(p.toString());
 		

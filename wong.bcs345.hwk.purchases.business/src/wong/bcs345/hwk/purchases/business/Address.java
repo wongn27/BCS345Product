@@ -1,6 +1,3 @@
-/**
- * 
- */
 package wong.bcs345.hwk.purchases.business;
 
 import java.io.FileNotFoundException;
@@ -13,8 +10,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * @author wongn
- *
+ * The Address class contains instance members
+ * that describes an address...
+ * <p>
+ * Contains corresponding accessors/mutators
+ * for each member.
+ * </p>
+ * @author Natalie Wong
+ * @version HW#2
  */
 public class Address {
 	
@@ -24,6 +27,10 @@ public class Address {
 	private String state;
 	private String zip;
 	
+	/**
+	 * Default constructor
+	 * Sets the values of each member variable to a default value
+	 */
 	public Address() {
 		number = "N/A";
 		street = "N/A";
@@ -32,6 +39,15 @@ public class Address {
 		zip = "N/A";
 	}
 	
+	/**
+	 * Constructor 
+	 * Sets the values of each member variable to the corresponding parameter values
+	 * @param number
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 */
 	public Address(String number, String street, String city, String state, String zip) {
 		this.number = number;
 		this.street = street;
@@ -110,6 +126,10 @@ public class Address {
 		this.zip = zip;
 	}
 
+	/**
+	 * Write the contents of all member variables to the given instance of PrintStream
+	 * @param ps
+	 */
 	public void Write(PrintStream ps) {
 			ps.println(number);
 			ps.println(street);
@@ -118,6 +138,10 @@ public class Address {
 			ps.println(zip);		
 	}
 		
+	/**
+	 * Read the contents of all member variables from the given instance of Scanner
+	 * @param s
+	 */
 	public void Read(Scanner s) {		
 		number = s.nextLine();
 		street = s.nextLine();
@@ -126,6 +150,10 @@ public class Address {
 		zip = s.nextLine();	
 	}
 	
+	/**
+	 * Write the member variables in JSON format to the given PrintStream
+	 * @param ps
+	 */
 	public void WriteJSON(PrintStream ps) {
 		Address a = new Address();
 		a.setNumber(number);
@@ -142,6 +170,10 @@ public class Address {
 		ps.println(jsonString);  		
 	} 
 	
+	/**
+	 * Read the contents of all member variables from the given instance of Scanner as JSON
+	 * @param s
+	 */
 	public void ReadJSON(Scanner s) {
 		String json = s.nextLine();
 		Gson gson = new Gson();
@@ -149,6 +181,10 @@ public class Address {
 		Address a = gson.fromJson(json, Address.class);
 	}
 	
+	/**
+	 * Shows descriptive text and data
+	 * It will be used to display an address to the user
+	 */
 	@Override
 	public String toString() {
 		String s = number + " " + street + "," + " " + city + "," + " " + state + " " + zip;
