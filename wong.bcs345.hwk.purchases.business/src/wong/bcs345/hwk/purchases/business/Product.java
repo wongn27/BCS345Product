@@ -1,5 +1,6 @@
 package wong.bcs345.hwk.purchases.business;
 
+import java.io.FileReader;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ import com.google.gson.GsonBuilder;
  * for each member.
  * </p>
  * @author Natalie Wong
- * @version HW#2
+ * @version HW#3
  */
 public class Product {
 
@@ -97,11 +98,12 @@ public class Product {
 	 * Read the contents of all member variables from the given instance of Scanner as JSON
 	 * @param s
 	 */
-	public void ReadJSON(Scanner s) {
-		String json = s.nextLine();
+	public void ReadJSON(FileReader fr) { 
 		Gson gson = new Gson();
 		
-		Product p = gson.fromJson(json, Product.class);
+		Product p = gson.fromJson(fr, Product.class); 
+		this.description = p.getDescription();
+		this.price = p.getPrice();
 	}
 	
 	/**

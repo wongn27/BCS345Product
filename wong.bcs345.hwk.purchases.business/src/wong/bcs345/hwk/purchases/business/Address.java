@@ -1,9 +1,7 @@
 package wong.bcs345.hwk.purchases.business;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintStream;
-import java.text.MessageFormat;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -17,7 +15,7 @@ import com.google.gson.GsonBuilder;
  * for each member.
  * </p>
  * @author Natalie Wong
- * @version HW#2
+ * @version HW#3
  */
 public class Address {
 	
@@ -172,13 +170,17 @@ public class Address {
 	
 	/**
 	 * Read the contents of all member variables from the given instance of Scanner as JSON
-	 * @param s
+	 * @param fr
 	 */
-	public void ReadJSON(Scanner s) {
-		String json = s.nextLine();
+	public void ReadJSON(FileReader fr) { 
 		Gson gson = new Gson();
 		
-		Address a = gson.fromJson(json, Address.class);
+		Address a = gson.fromJson(fr, Address.class); 
+		this.number = a.getNumber();
+		this.street = a.getStreet();
+		this.city = a.getCity();
+		this.state = a.getState();
+		this.zip = a.getZip();
 	}
 	
 	/**
@@ -187,7 +189,7 @@ public class Address {
 	 */
 	@Override
 	public String toString() {
-		String s = number + " " + street + "," + " " + city + "," + " " + state + " " + zip;
+		String s = number + " " + street + "\n" + city + "," + " " + state + " " + zip;
 		return s;
 	}
 }
