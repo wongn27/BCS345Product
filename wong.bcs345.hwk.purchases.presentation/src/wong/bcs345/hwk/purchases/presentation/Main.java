@@ -1,6 +1,10 @@
 package wong.bcs345.hwk.purchases.presentation;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.util.Scanner;
+
 import wong.bcs345.hwk.purchases.business.*; // * character imports both Address and Product classes 
 
 /**
@@ -10,7 +14,7 @@ import wong.bcs345.hwk.purchases.business.*; // * character imports both Address
  * </p>
  * 
  * @author Natalie Wong
- * @version HW#3
+ * @version HW#4
  * @since Sep 27, 2019
  */
 public class Main {
@@ -22,8 +26,37 @@ public class Main {
 	 * @throws FileNotFoundException
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
-
-		CustomerPurchaseConsoleUI cpcui = new CustomerPurchaseConsoleUI();
-		cpcui.ShowUI();
+		int choice;
+		
+		File f = new File("cp");
+		if (f.exists()) {
+			System.out.println("Exists");
+		}
+		else 
+			System.out.println("Does not exist");
+		
+		do {
+			System.out.println("Choose UI");
+			System.out.println("---------");
+			System.out.println("1 - CustomerPurchaseConsoleUI");
+			System.out.println("2 - PurchaseCollectionConsoleUI");
+			System.out.println("3 - Exit");
+			System.out.println("Enter Choice: ");
+			
+			Scanner scan = new Scanner(System.in);
+			choice = scan.nextInt();
+			
+			switch (choice) {
+			case 1:
+				CustomerPurchaseConsoleUI cpcui = new CustomerPurchaseConsoleUI();
+				cpcui.ShowUI();
+				break;
+				
+			case 2: 
+				PurchaseCollectionConsoleUI pccui = new PurchaseCollectionConsoleUI();
+				pccui.ShowUI();
+				break;
+			}
+		} while (choice != 3);
 	}
 }
