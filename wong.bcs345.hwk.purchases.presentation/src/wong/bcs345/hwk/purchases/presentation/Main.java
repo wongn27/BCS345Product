@@ -28,12 +28,12 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		int choice;
 		
-		File f = new File("cp");
-		if (f.exists()) {
-			System.out.println("Exists");
-		}
-		else 
-			System.out.println("Does not exist");
+//		File f = new File("pc");
+//		if (f.exists()) {
+//			System.out.println("Exists");
+//		}
+//		else 
+//			System.out.println("Does not exist");
 		
 		do {
 			System.out.println("Choose UI");
@@ -51,7 +51,6 @@ public class Main {
 				CustomerPurchaseConsoleUI cpcui = new CustomerPurchaseConsoleUI();
 				cpcui.ShowUI();
 				break;
-				
 			case 2: 
 				PurchaseCollectionConsoleUI pccui = new PurchaseCollectionConsoleUI();
 				pccui.ShowUI();

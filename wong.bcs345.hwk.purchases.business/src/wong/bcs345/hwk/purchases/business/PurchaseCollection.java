@@ -45,10 +45,7 @@ public class PurchaseCollection {
 	 * Searches the array for the purchase that costs the most and returns it 
 	 */
 	public Purchase getMaxPurchase() {
-		double price;
-		double quantity;
 		Purchase p = purchase[0]; 
-		double purchaseCost;
 		double maxPurchase = purchase[0].getProduct().getPrice() * purchase[0].getQuantity();
 		for (int i = 1 ; i < purchase.length; i++) {
 			if (purchase[i].getProduct().getPrice() * purchase[i].getQuantity() > maxPurchase) {
@@ -64,8 +61,7 @@ public class PurchaseCollection {
 	 */
 	public Purchase getByIndex(int index) throws ArrayIndexOutOfBoundsException {
 		if (index < 0 || index > purchase.length) {
-			ArrayIndexOutOfBoundsException a = new ArrayIndexOutOfBoundsException();
-			throw a;
+			throw new ArrayIndexOutOfBoundsException();
 		}
 		Purchase p = purchase[index];
 		return p;

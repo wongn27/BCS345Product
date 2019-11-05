@@ -1,8 +1,10 @@
 package wong.bcs345.hwk.purchases.presentation;
 
 import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.Scanner;
 
+import wong.bcs345.hwk.purchases.business.Purchase;
 import wong.bcs345.hwk.purchases.business.PurchaseCollection;
 
 /**
@@ -23,6 +25,7 @@ public class PurchaseCollectionConsoleUI {
 	 */
 	public void ShowUI() {
 		PurchaseCollection purchasecollection = new PurchaseCollection();
+		Purchase[] purchase = new Purchase[20];
 		int choice;
 
 		do {
@@ -51,15 +54,53 @@ public class PurchaseCollectionConsoleUI {
 					Scanner fileScanner = new Scanner(new FileReader(fileName));
 					purchasecollection.Read(fileScanner);
 				} catch (Exception e) {
-					//System.out.println("Error");
+					System.out.println("Error");
 					e.printStackTrace();
 				}
-				
 				break;
-			case 2: 
-				
+
+			case 2:
+
 				break;
+
 			case 3:
+				try {
+					Scanner userInput = new Scanner(System.in);
+					System.out.print("Enter the output filename: ");
+					String outputFile = userInput.nextLine();
+					PrintStream writeToFile = new PrintStream(outputFile);
+					purchasecollection.Write(writeToFile);
+				} catch (Exception e) {
+					System.out.println("Error");
+					e.printStackTrace();
+				}
+				break;
+
+			case 4:
+
+				break;
+
+			case 5: 
+				try {
+					Scanner userInput = new Scanner(System.in);
+					System.out.println("Enter an index: ");
+					int index = userInput.nextInt();
+					//purchase = purchase.getByIndex(index);
+				} catch (Exception ArrayOutOfBoundsException) {
+					System.err.println("Error - invalid index");
+				}
+				break;
+				
+			case 6:
+				//Purchase p = purchase.getMaxPurchase();
+				//System.out.println(p);
+				break;
+			
+			default:
+				System.out.println("Invalid choice");
+			
+			
+
 			}
 		} while (choice != 9);
 	}

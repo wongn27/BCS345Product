@@ -77,7 +77,7 @@ public class Product {
 		s.nextLine();
 		description = s.nextLine();
 		System.out.println("description is: [" + description + "]");
-		//s.next(); // WE ADDED THIS, MAYBE REMOVE LATER
+		//s.next(); // ADDED THIS, MAYBE REMOVE LATER
 		price = s.nextDouble();
 		System.out.println("Price is: [" + price + "]");
 	}
