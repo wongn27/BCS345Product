@@ -25,7 +25,6 @@ public class PurchaseCollectionConsoleUI {
 	 */
 	public void ShowUI() {
 		PurchaseCollection purchasecollection = new PurchaseCollection();
-		Purchase[] purchase = new Purchase[20];
 		int choice;
 
 		do {
@@ -85,23 +84,33 @@ public class PurchaseCollectionConsoleUI {
 					Scanner userInput = new Scanner(System.in);
 					System.out.println("Enter an index: ");
 					int index = userInput.nextInt();
-					//purchase = purchase.getByIndex(index);
+					Purchase p = purchasecollection.getByIndex(index);
+					System.out.println(p);
 				} catch (Exception ArrayOutOfBoundsException) {
 					System.err.println("Error - invalid index");
 				}
 				break;
 				
 			case 6:
-				//Purchase p = purchase.getMaxPurchase();
-				//System.out.println(p);
+				Purchase p = purchasecollection.getMaxPurchase();
+				System.out.println(p);
 				break;
 			
+			case 7:
+				
+				
+				break;
+				
+			case 8:
+				String s = purchasecollection.toString();
+				System.out.println(s);
+				break;
+				
 			default:
-				System.out.println("Invalid choice");
-			
-			
-
+				System.out.println("");
+				break;
 			}
 		} while (choice != 9);
+		//System.exit(0);
 	}
 }

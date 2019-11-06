@@ -24,7 +24,10 @@ public class PurchaseCollection {
 	 */
 	public PurchaseCollection() {
 		customer = new Customer();
-		 purchase = new Purchase[5];
+		 purchase = new Purchase[4];
+		 for (int i = 0; i < purchase.length; i++) {
+			 purchase[i] = new Purchase();
+		 }
 	}
 	
 	/**
@@ -136,5 +139,14 @@ public class PurchaseCollection {
 		for (int i = 0; i < purchase.length; i++) {
 			ps.println(purchase[i].toString());
 		}	
+	}
+	
+	@Override
+	public String toString() {
+		String s = "";
+		for (int i = 0; i < purchase.length; i++) {
+			 s += purchase[i].toString() + "\n";
+		}
+		return (customer.toString() + "\n" + s.toString()); 
 	}
 }
