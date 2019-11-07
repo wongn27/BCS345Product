@@ -1,5 +1,6 @@
 package wong.bcs345.hwk.purchases.presentation;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -59,7 +60,15 @@ public class PurchaseCollectionConsoleUI {
 				break;
 
 			case 2:
-
+				try {
+					Scanner userInput = new Scanner(System.in);
+					System.out.print("Enter the input filename: ");
+					String fileName = userInput.nextLine();
+					FileReader reader = new FileReader(fileName);
+					purchasecollection.ReadJSON(reader);
+				} catch (Exception e) {
+					System.out.println("Error");
+				}
 				break;
 
 			case 3:
@@ -76,7 +85,16 @@ public class PurchaseCollectionConsoleUI {
 				break;
 
 			case 4:
-
+				try {
+					Scanner userInput = new Scanner(System.in);
+					System.out.print("Enter the output filename: ");
+					String outputFile = userInput.nextLine();
+					PrintStream writeToFile = new PrintStream(outputFile);
+					purchasecollection.WriteJSON(writeToFile);
+				} catch (Exception e) {
+					System.out.println("Error");
+					e.printStackTrace();
+				}
 				break;
 
 			case 5: 
@@ -97,8 +115,15 @@ public class PurchaseCollectionConsoleUI {
 				break;
 			
 			case 7:
-				
-				
+				try {
+					PrintStream report = new PrintStream("report");
+					purchasecollection.Report(report);
+					Scanner fileScanner = new Scanner(new FileReader("report"));
+					purchasecollection.Read(fileScanner);
+					
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
 				break;
 				
 			case 8:

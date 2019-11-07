@@ -76,10 +76,10 @@ public class Product {
 		
 		s.nextLine();
 		description = s.nextLine();
-		System.out.println("description is: [" + description + "]");
+		//System.out.println("description is: [" + description + "]");
 		//s.next(); // ADDED THIS, MAYBE REMOVE LATER
 		price = s.nextDouble();
-		System.out.println("Price is: [" + price + "]");
+		//System.out.println("Price is: [" + price + "]");
 	}
 	
 	/**

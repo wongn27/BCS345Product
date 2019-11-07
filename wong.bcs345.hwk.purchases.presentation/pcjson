@@ -1,0 +1,50 @@
+{
+   "customer" :
+   {
+      "first" : "Jane",
+      "last" : "Doe",
+      "address" : 
+      {  
+         "number" : "10", 
+         "street" : "Broadway", 
+         "city" : "New York", 
+         "state" : "NY", 
+   		 "zip" : "10001"
+      }
+   },
+   "purchase" :
+   [
+   	{
+   		"product" : 
+   		{  
+      		"description" : "Galaxy s10", 
+      		"price" : 199.99 
+   		},
+   		"quantity" : 2
+},
+   	{
+   		"product" : 
+   		{  
+      		"description" : "Samsung Bluetooth", 
+      		"price" : 29.99  
+   		},
+   		"quantity" : 1
+},
+   	{
+   		"product" : 
+   		{  
+      		"description" : "Slim Fit Hard Plastic Case", 
+      		"price" : 2.99  
+   		},
+   		"quantity" : 2
+},
+   	{
+   		"product" : 
+   		{  
+      		"description" : "Charger", 
+      		"price" : 17.99  
+   		},
+   		"quantity" : 3
+}
+   ]
+}

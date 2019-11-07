@@ -1,0 +1,43 @@
+{
+  "customer": {
+    "first": "N/A",
+    "last": "N/A",
+    "address": {
+      "number": "N/A",
+      "street": "N/A",
+      "city": "N/A",
+      "state": "N/A",
+      "zip": "N/A"
+    }
+  },
+  "purchase": [
+    {
+      "quantity": 3,
+      "product": {
+        "description": "N/A",
+        "price": 0.0
+      }
+    },
+    {
+      "quantity": 3,
+      "product": {
+        "description": "N/A",
+        "price": 0.0
+      }
+    },
+    {
+      "quantity": 3,
+      "product": {
+        "description": "N/A",
+        "price": 0.0
+      }
+    },
+    {
+      "quantity": 3,
+      "product": {
+        "description": "N/A",
+        "price": 0.0
+      }
+    }
+  ]
+}
