@@ -115,15 +115,12 @@ public class PurchaseCollectionConsoleUI {
 				break;
 			
 			case 7:
-				try {
-					PrintStream report = new PrintStream("report");
+				
+					PrintStream report = new PrintStream(System.out);
 					purchasecollection.Report(report);
-					Scanner fileScanner = new Scanner(new FileReader("report"));
-					purchasecollection.Read(fileScanner);
 					
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
+					
+				
 				break;
 				
 			case 8:

@@ -83,6 +83,12 @@ public class PurchaseCollection {
 		// s.next();
 
 		int i = s.nextInt(); // NUMBER THAT WE WANT TO LOOP, # of purchases
+		
+		purchase = new Purchase[i];
+		//for (int i = 0; i < purchase.length; i++) {
+		//	purchase[i] = new Purchase();
+		//}
+		
 		System.out.println(i);
 
 		for (int j = 0; j < i; j++) {
@@ -104,6 +110,8 @@ public class PurchaseCollection {
 	 */
 	public void Write(PrintStream ps) {
 		customer.Write(ps);
+		
+		System.out.println(purchase.length);
 		for (int i = 0; i < purchase.length; i++) {
 			purchase[i].Write(ps);
 		}
@@ -155,9 +163,7 @@ public class PurchaseCollection {
 		purchasecollection = gson.fromJson(fr, PurchaseCollection.class);
 		
 		this.customer = purchasecollection.getCustomer();
-		//this.purchase = purchasecollection.S
-		//String s = purchasecollection.toString();
-		//System.out.println(s);
+		this.purchase = purchasecollection.purchase;
 	}
 	
 	/**
