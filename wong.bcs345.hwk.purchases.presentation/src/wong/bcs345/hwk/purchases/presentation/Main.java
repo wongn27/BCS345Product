@@ -14,9 +14,10 @@ import wong.bcs345.hwk.purchases.business.*; // * character imports both Address
  * </p>
  * 
  * @author Natalie Wong
- * @version HW#4
+ * @version HW#5
  * @since Sep 27, 2019
  */
+
 public class Main {
 
 	/**
@@ -27,14 +28,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		int choice;
-		
-//		File f = new File("pc");
-//		if (f.exists()) {
-//			System.out.println("Exists");
-//		}
-//		else 
-//			System.out.println("Does not exist");
-		
+
 		do {
 			System.out.println("Choose UI");
 			System.out.println("---------");
@@ -42,16 +36,16 @@ public class Main {
 			System.out.println("2 - PurchaseCollectionConsoleUI");
 			System.out.println("3 - Exit");
 			System.out.println("Enter Choice: ");
-			
+
 			Scanner scan = new Scanner(System.in);
 			choice = scan.nextInt();
-			
+
 			switch (choice) {
 			case 1:
 				CustomerPurchaseConsoleUI cpcui = new CustomerPurchaseConsoleUI();
 				cpcui.ShowUI();
 				break;
-			case 2: 
+			case 2:
 				PurchaseCollectionConsoleUI pccui = new PurchaseCollectionConsoleUI();
 				pccui.ShowUI();
 				break;

@@ -15,7 +15,7 @@ import wong.bcs345.hwk.purchases.business.PurchaseCollection;
  * </p>
  * 
  * @author Natalie Wong
- * @version HW#4
+ * @version HW#5
  *
  */
 public class PurchaseCollectionConsoleUI {
@@ -115,12 +115,8 @@ public class PurchaseCollectionConsoleUI {
 				break;
 			
 			case 7:
-				
 					PrintStream report = new PrintStream(System.out);
 					purchasecollection.Report(report);
-					
-					
-				
 				break;
 				
 			case 8:

@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
  * </p>
  * 
  * @author Natalie Wong
- * @version HW#4
+ * @version HW#5
  */
 public class PurchaseCollection {
 
@@ -79,26 +79,20 @@ public class PurchaseCollection {
 	 */
 	public void Read(Scanner s) {
 		customer.Read(s);
-		System.out.println(customer.toString());
+		//System.out.println(customer.toString());
 		// s.next();
 
 		int i = s.nextInt(); // NUMBER THAT WE WANT TO LOOP, # of purchases
 		
 		purchase = new Purchase[i];
-		//for (int i = 0; i < purchase.length; i++) {
-		//	purchase[i] = new Purchase();
-		//}
 		
-		System.out.println(i);
+		//System.out.println(i);
 
 		for (int j = 0; j < i; j++) {
 			purchase[j] = new Purchase();
 			this.purchase[j].Read(s);
-			System.out.println(this.purchase[j]);
+			//System.out.println(this.purchase[j]);
 		}
-
-		// purchase[0] = new Purchase();
-		// this.purchase[0].Read(s);
 
 	}
 
@@ -112,6 +106,7 @@ public class PurchaseCollection {
 		customer.Write(ps);
 		
 		System.out.println(purchase.length);
+		
 		for (int i = 0; i < purchase.length; i++) {
 			purchase[i].Write(ps);
 		}
@@ -125,6 +120,8 @@ public class PurchaseCollection {
 		ps.println("Purchase Report");
 		ps.println("---------------");
 
+		ps.println(customer.toString() + "\n");
+		
 		ps.printf("%-30s", "Description");
 		ps.printf("%25s", "Price");
 		ps.printf("%15s", "Quantity");
@@ -136,20 +133,37 @@ public class PurchaseCollection {
 		ps.printf("%15s", "----");
 		ps.printf("\n");
 
+		double totalQuantity = 0.0;
+		double totalCost = 0.0;
+		
 		for (int i = 0; i < purchase.length; i++) {
-			ps.println(purchase[i].toString());
+			
+			ps.printf("%-30s", purchase[i].getProduct().getDescription());
+			ps.printf("%25.2f", purchase[i].getProduct().getPrice());
+			ps.printf("%15s", purchase[i].getQuantity());					// .0f gives errors
+			
+			int quantity = purchase[i].getQuantity(); 
+			
+			double cost = purchase[i].getProduct().getPrice() * purchase[i].getQuantity();
+			ps.printf("%15s", cost);
+			
+			totalQuantity += quantity;
+			totalCost += cost;
 
-			ps.printf("%-30s", "-----------");
-			ps.printf("%25s", "-----");
-			ps.printf("%15s", "--------");
-			ps.printf("%15s", "----");
-			ps.printf("\n");
-			ps.printf("%-30s", "Total");
-			ps.printf("%25s", "");
-
-			// System.out.println(purchase[1]);
-
+			ps.println("");
 		}
+		
+		ps.printf("%-30s", "-----------");
+		ps.printf("%25s", "-----");
+		ps.printf("%15s", "--------");
+		ps.printf("%15s", "----");
+		ps.printf("\n");
+		ps.printf("%-30s", "Total");
+		ps.printf("%25s", "");
+		ps.printf("%15.0f", totalQuantity);
+		ps.printf("%15.2f\n", totalCost);
+		ps.println();
+
 	}
 
 	/**
