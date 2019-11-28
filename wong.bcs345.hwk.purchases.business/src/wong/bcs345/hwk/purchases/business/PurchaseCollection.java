@@ -105,7 +105,7 @@ public class PurchaseCollection {
 	public void Write(PrintStream ps) {
 		customer.Write(ps);
 		
-		System.out.println(purchase.length);
+		ps.println(purchase.length);
 		
 		for (int i = 0; i < purchase.length; i++) {
 			purchase[i].Write(ps);
@@ -187,13 +187,12 @@ public class PurchaseCollection {
 	public void WriteJSON(PrintStream ps) {
 		PurchaseCollection purchasecollection = new PurchaseCollection();
 		purchasecollection.setCustomer(customer);
-		//purchasecollection.purchase(purchase);
 		
 		GsonBuilder builder = new GsonBuilder(); 
 		builder.setPrettyPrinting(); 
 		Gson gson = builder.create();
 
-		String jsonString = gson.toJson(purchasecollection);
+		String jsonString = gson.toJson(this);
 		ps.println(jsonString);  		
 	}
 	
