@@ -8,13 +8,13 @@ import java.util.Scanner;
 import wong.bcs345.hwk.purchases.business.*; // * character imports both Address and Product classes 
 
 /**
- * The <strong>CustomerDriver</strong> class.
+ * The <strong>Main</strong> class.
  * <p>
- * Reads an input file and writes to an output file.
+ * Displays a user menu and processes the user's selections
  * </p>
  * 
  * @author Natalie Wong
- * @version HW#5
+ * @version HW#6
  * @since Sep 27, 2019
  */
 
@@ -34,7 +34,8 @@ public class Main {
 			System.out.println("---------");
 			System.out.println("1 - CustomerPurchaseConsoleUI");
 			System.out.println("2 - PurchaseCollectionConsoleUI");
-			System.out.println("3 - Exit");
+			System.out.println("3 - PurchasesGraphicalUI");
+			System.out.println("4 - Exit");
 			System.out.println("Enter Choice: ");
 
 			Scanner scan = new Scanner(System.in);
@@ -45,11 +46,17 @@ public class Main {
 				CustomerPurchaseConsoleUI cpcui = new CustomerPurchaseConsoleUI();
 				cpcui.ShowUI();
 				break;
+				
 			case 2:
 				PurchaseCollectionConsoleUI pccui = new PurchaseCollectionConsoleUI();
 				pccui.ShowUI();
 				break;
+				
+			case 3:
+				PurchasesGraphicalUI pgui = new PurchasesGraphicalUI();
+				pgui.ShowUI();
+				break;
 			}
-		} while (choice != 3);
+		} while (choice != 4);
 	}
 }

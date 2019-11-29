@@ -1,0 +1,65 @@
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+	fx:controller="wong.bcs345.hwk.purchases.presentation.PurchasesController">
+	<children>
+		<TabPane>
+			<tabs>
+				<Tab text="Customer">
+					<VBox>
+						<HBox>
+							<Label text="First name" />
+							<TextField fx:id="firstNameTextField"></TextField>
+						</HBox>
+						<HBox>
+							<Label text="Last name" />
+							<TextField></TextField>
+						</HBox>
+						<HBox>
+							<Label text="Number" />
+							<TextField></TextField>
+						</HBox>
+						<HBox>
+							<Label text="Street" />
+							<TextField></TextField>
+						</HBox>
+						<HBox>
+							<Label text="City" />
+							<TextField></TextField>
+						</HBox>
+						<HBox>
+							<Label text="State" />
+							<TextField></TextField>
+						</HBox>
+						<HBox>
+							<Label text="Zip" />
+							<TextField></TextField>
+						</HBox>
+					</VBox>
+				</Tab>
+
+				<Tab text="Purchases">
+				</Tab>
+			</tabs>
+		</TabPane>
+		<VBox>
+		
+			<MenuBar>
+				<menus>
+					<Menu text="File">
+						<items>
+							<MenuItem text="Open..." />
+							<SeparatorMenuItem />
+							<MenuItem text="Save As..." />
+							<MenuItem text="Save Report..." />
+							<SeparatorMenuItem />
+							<MenuItem text="Exit" />
+						</items>
+					</Menu>
+				</menus>
+			</MenuBar>
+		</VBox>
+	</children>
+</AnchorPane>
