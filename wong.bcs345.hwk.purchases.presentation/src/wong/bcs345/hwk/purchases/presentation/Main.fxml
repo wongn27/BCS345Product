@@ -50,12 +50,12 @@
 				<menus>
 					<Menu text="File">
 						<items>
-							<MenuItem text="Open..." />
+							<MenuItem fx:id = "openMenuItem" text="Open..." onAction = "#handleOpenMenuItemAction" />
 							<SeparatorMenuItem />
-							<MenuItem text="Save As..." />
-							<MenuItem text="Save Report..." />
+							<MenuItem fx:id = "saveAsMenuItem" text="Save As..." onAction = "#handleSaveAsMenuItemAction" />
+							<MenuItem fx:id = "saveReportMenuItem" text="Save Report..." onAction = "#handleSaveReportMenuItemAction" />
 							<SeparatorMenuItem />
-							<MenuItem text="Exit" />
+							<MenuItem fx:id = "exitMenuItem" text="Exit" onAction = "#handleExitMenuItemAction" />
 						</items>
 					</Menu>
 				</menus>
