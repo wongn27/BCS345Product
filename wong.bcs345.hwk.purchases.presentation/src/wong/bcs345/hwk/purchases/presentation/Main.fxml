@@ -5,7 +5,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
 	fx:controller="wong.bcs345.hwk.purchases.presentation.PurchasesController">
 	<children>
-		<TabPane>
+		<TabPane tabClosingPolicy="UNAVAILABLE">
 			<tabs>
 				<Tab text="Customer">
 					<VBox>
@@ -15,27 +15,27 @@
 						</HBox>
 						<HBox>
 							<Label text="Last name" />
-							<TextField></TextField>
+							<TextField fx:id="lastNameTextField"></TextField>
 						</HBox>
 						<HBox>
 							<Label text="Number" />
-							<TextField></TextField>
+							<TextField fx:id="numberTextField"></TextField>
 						</HBox>
 						<HBox>
 							<Label text="Street" />
-							<TextField></TextField>
+							<TextField fx:id="streetTextField"></TextField>
 						</HBox>
 						<HBox>
 							<Label text="City" />
-							<TextField></TextField>
+							<TextField fx:id="cityTextField"></TextField>
 						</HBox>
 						<HBox>
 							<Label text="State" />
-							<TextField></TextField>
+							<TextField fx:id="stateTextField"></TextField>
 						</HBox>
 						<HBox>
 							<Label text="Zip" />
-							<TextField></TextField>
+							<TextField fx:id="zipTextField"></TextField>
 						</HBox>
 					</VBox>
 				</Tab>

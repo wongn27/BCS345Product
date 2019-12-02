@@ -35,6 +35,24 @@ public class PurchasesController {
 
 	@FXML
 	private TextField firstNameTextField;
+	
+	@FXML
+	private TextField lastNameTextField;
+	
+	@FXML
+	private TextField numberTextField;
+	
+	@FXML
+	private TextField streetTextField;
+	
+	@FXML
+	private TextField cityTextField;
+	
+	@FXML
+	private TextField stateTextField;
+	
+	@FXML
+	private TextField zipTextField;
 
 	@FXML
 	private MenuItem openMenuItem;
@@ -49,14 +67,50 @@ public class PurchasesController {
 	private MenuItem exitMenuItem;
 
 	@FXML
-	protected void getCustomerData() {
+	protected void populateFirstNameTextField() {
 		// get first name
-		String text = purchasecollection.getCustomer().getFirst();
+		String firstName = purchasecollection.getCustomer().getFirst();
 
 		// set first name in first name text field
-		firstNameTextField.setText(text);
+		firstNameTextField.setText(firstName);
+	}
+	
+	@FXML 
+	protected void populateLastNameTextField() {
+		String lastName = purchasecollection.getCustomer().getLast();
+		lastNameTextField.setText(lastName);
+	}
+	
+	@FXML
+	protected void populateNumberTextField() {
+		String number = purchasecollection.getCustomer().getAddress().getNumber();
+		numberTextField.setText(number);
 	}
 
+	@FXML
+	protected void populateStreetTextField() {
+		String street = purchasecollection.getCustomer().getAddress().getStreet();
+		streetTextField.setText(street);
+	}
+	
+	@FXML
+	protected void populateCityTextField() {
+		String city = purchasecollection.getCustomer().getAddress().getCity();
+		cityTextField.setText(city);
+	}
+	
+	@FXML
+	protected void populateStateTextField() {
+		String state = purchasecollection.getCustomer().getAddress().getState();
+		stateTextField.setText(state);
+	}
+	
+	@FXML
+	protected void populateZipTextField() {
+		String zip = purchasecollection.getCustomer().getAddress().getZip();
+		zipTextField.setText(zip);
+	}
+	
 	@FXML
 	private void handleOpenMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
@@ -67,7 +121,13 @@ public class PurchasesController {
 		try {
 			Scanner fileScanner = new Scanner(new FileReader(selectedFile));
 			purchasecollection.Read(fileScanner);
-			getCustomerData();
+			populateFirstNameTextField();
+			populateLastNameTextField();
+			populateNumberTextField();
+			populateStreetTextField();
+			populateCityTextField();
+			populateStateTextField();
+			populateZipTextField();
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}	
