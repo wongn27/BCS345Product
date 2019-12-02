@@ -31,7 +31,7 @@ import wong.bcs345.hwk.purchases.business.PurchaseCollection;
 public class PurchasesController {
 
 	@FXML
-	private PurchaseCollection purchasecollection;
+	private PurchaseCollection purchasecollection = new PurchaseCollection();
 
 	@FXML
 	private TextField firstNameTextField;
@@ -50,34 +50,27 @@ public class PurchasesController {
 
 	@FXML
 	protected void getCustomerData() {
-		String text;
-
 		// get first name
-		text = purchasecollection.getCustomer().getFirst();
+		String text = purchasecollection.getCustomer().getFirst();
 
 		// set first name in first name text field
 		firstNameTextField.setText(text);
-
 	}
 
 	@FXML
 	private void handleOpenMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Open PurchaseCollection File");
-		filechooser.showOpenDialog(new Stage());
+		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
+		File selectedFile = filechooser.showOpenDialog(new Stage());
 
-		JFileChooser chooser = new JFileChooser();
-		// int returnValue = chooser.showOpenDialog(null);
-		// User chose Open
-		// if (JFileChooser.APPROVE_OPTION) {
 		try {
-			String file = filechooser.getInitialFileName();
-			Scanner fileScanner = new Scanner(new FileReader(file));
+			Scanner fileScanner = new Scanner(new FileReader(selectedFile));
 			purchasecollection.Read(fileScanner);
+			getCustomerData();
 		} catch (Exception exception) {
 			exception.printStackTrace();
-		}
-		
+		}	
 	}
 
 	@FXML
@@ -100,5 +93,4 @@ public class PurchasesController {
 	private void handleExitMenuItemAction(ActionEvent event) {
 		Platform.exit();
 	}
-
 }
