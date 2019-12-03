@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -68,10 +69,7 @@ public class PurchasesController {
 
 	@FXML
 	protected void populateFirstNameTextField() {
-		// get first name
 		String firstName = purchasecollection.getCustomer().getFirst();
-
-		// set first name in first name text field
 		firstNameTextField.setText(firstName);
 	}
 	
@@ -112,7 +110,7 @@ public class PurchasesController {
 	}
 	
 	@FXML
-	private void handleOpenMenuItemAction(ActionEvent event) {
+	protected void handleOpenMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Open PurchaseCollection File");
 		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
@@ -134,23 +132,37 @@ public class PurchasesController {
 	}
 
 	@FXML
-	private void handleSaveAsMenuItemAction(ActionEvent event) {
+	protected void handleSaveAsMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Save As PurchaseCollection");
-		filechooser.showSaveDialog(new Stage());
-
+		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
+		File fileName = filechooser.showSaveDialog(new Stage());
+		
+		try {
+			PrintStream saveFile = new PrintStream(fileName);
+			purchasecollection.Write(saveFile);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 
 	@FXML
-	private void handleSaveReportMenuItemAction(ActionEvent event) {
+	protected void handleSaveReportMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Save PurchaseCollection Report");
-		filechooser.showSaveDialog(new Stage());
+		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
+		File fileName = filechooser.showSaveDialog(new Stage());
 
+		try {
+			PrintStream saveReport = new PrintStream(fileName);
+			purchasecollection.Report(saveReport);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 
 	@FXML
-	private void handleExitMenuItemAction(ActionEvent event) {
+	protected void handleExitMenuItemAction(ActionEvent event) {
 		Platform.exit();
 	}
 }
