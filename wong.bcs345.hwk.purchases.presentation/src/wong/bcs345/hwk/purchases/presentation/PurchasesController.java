@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -66,6 +67,9 @@ public class PurchasesController {
 
 	@FXML
 	private MenuItem exitMenuItem;
+	
+	@FXML 
+	private ListView<String> listViewItems = new ListView<>();
 
 	@FXML
 	protected void populateFirstNameTextField() {
@@ -126,6 +130,14 @@ public class PurchasesController {
 			populateCityTextField();
 			populateStateTextField();
 			populateZipTextField();
+			
+			int length = purchasecollection.getPurchaseArrayLength();
+			// ObservableList
+			
+			for (int i = 0; i < length; i++) {
+				
+			}
+			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}	

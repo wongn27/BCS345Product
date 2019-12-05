@@ -207,4 +207,8 @@ public class PurchaseCollection {
 		}
 		return (customer.toString() + "\n" + s.toString());
 	}
+	
+	public int getPurchaseArrayLength() {
+		return purchase.length;
+	}
 }
