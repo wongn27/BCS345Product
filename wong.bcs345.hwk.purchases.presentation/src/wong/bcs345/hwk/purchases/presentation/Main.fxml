@@ -5,47 +5,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
 	fx:controller="wong.bcs345.hwk.purchases.presentation.PurchasesController">
 	<children>
-		<TabPane tabClosingPolicy="UNAVAILABLE">
-			<tabs>
-				<Tab text="Customer">
-					<VBox spacing="5">
-						<HBox spacing="80">
-							<Label text="First name" />
-							<TextField fx:id="firstNameTextField"></TextField>
-						</HBox>
-						<HBox spacing="81">
-							<Label text="Last name" />
-							<TextField fx:id="lastNameTextField"></TextField>
-						</HBox>
-						<HBox spacing="91">
-							<Label text="Number" />
-							<TextField fx:id="numberTextField"></TextField>
-						</HBox>
-						<HBox spacing="103">
-							<Label text="Street" />
-							<TextField fx:id="streetTextField"></TextField>
-						</HBox>
-						<HBox spacing="114">
-							<Label text="City" />
-							<TextField fx:id="cityTextField"></TextField>
-						</HBox>
-						<HBox spacing="108">
-							<Label text="State" />
-							<TextField fx:id="stateTextField"></TextField>
-						</HBox>
-						<HBox spacing="118">
-							<Label text="Zip" />
-							<TextField fx:id="zipTextField"></TextField>
-						</HBox>
-					</VBox>
-				</Tab>
-
-				<Tab text="Purchases">
-				</Tab>
-			</tabs>
-		</TabPane>
 		<VBox>
-		
 			<MenuBar>
 				<menus>
 					<Menu text="File">
@@ -60,6 +20,47 @@
 					</Menu>
 				</menus>
 			</MenuBar>
+
+			<TabPane tabClosingPolicy="UNAVAILABLE">
+				<tabs>
+					<Tab text="Customer">
+						<VBox spacing="5">
+							<HBox spacing="80">
+								<Label text="First name" />
+								<TextField fx:id="firstNameTextField"></TextField>
+							</HBox>
+							<HBox spacing="81">
+								<Label text="Last name" />
+								<TextField fx:id="lastNameTextField"></TextField>
+							</HBox>
+							<HBox spacing="91">
+								<Label text="Number" />
+								<TextField fx:id="numberTextField"></TextField>
+							</HBox>
+							<HBox spacing="103">
+								<Label text="Street" />
+								<TextField fx:id="streetTextField"></TextField>
+							</HBox>
+							<HBox spacing="114">
+								<Label text="City" />
+								<TextField fx:id="cityTextField"></TextField>
+							</HBox>
+							<HBox spacing="108">
+								<Label text="State" />
+								<TextField fx:id="stateTextField"></TextField>
+							</HBox>
+							<HBox spacing="118">
+								<Label text="Zip" />
+								<TextField fx:id="zipTextField"></TextField>
+							</HBox>
+						</VBox>
+					</Tab>
+	
+					<Tab text="Purchases">
+					</Tab>
+				</tabs>
+			</TabPane>
+		
 		</VBox>
 	</children>
 </AnchorPane>

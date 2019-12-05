@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.util.Scanner;
 
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import wong.bcs345.hwk.purchases.business.*; // * character imports both Address and Product classes 
 
 /**

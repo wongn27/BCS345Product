@@ -20,6 +20,7 @@ public class PurchasesGraphicalUI {
 	public void ShowUI() {
 	     // Will call the start method of the Application
 		Application.launch(PurchasesApplication.class);
+		
 
 	}
 
