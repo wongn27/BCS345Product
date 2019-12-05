@@ -10,6 +10,8 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -17,6 +19,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import wong.bcs345.hwk.purchases.business.Purchase;
 import wong.bcs345.hwk.purchases.business.PurchaseCollection;
 
 /**
@@ -69,7 +72,7 @@ public class PurchasesController {
 	private MenuItem exitMenuItem;
 	
 	@FXML 
-	private ListView<String> listViewItems = new ListView<>();
+	private ListView<Purchase> listViewItems = new ListView<>();
 
 	@FXML
 	protected void populateFirstNameTextField() {
@@ -113,13 +116,14 @@ public class PurchasesController {
 		zipTextField.setText(zip);
 	}
 	
+	// fix cancel button and return to window
 	@FXML
 	protected void handleOpenMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Open PurchaseCollection File");
 		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
 		File selectedFile = filechooser.showOpenDialog(new Stage());
-
+		
 		try {
 			Scanner fileScanner = new Scanner(new FileReader(selectedFile));
 			purchasecollection.Read(fileScanner);
@@ -132,17 +136,25 @@ public class PurchasesController {
 			populateZipTextField();
 			
 			int length = purchasecollection.getPurchaseArrayLength();
-			// ObservableList
 			
-			for (int i = 0; i < length; i++) {
-				
+	        // get the observable list from the listview
+			ObservableList<Purchase> items = FXCollections.observableArrayList(); // change getPurchases to whatever functions get one purchase
+			
+			// clear list
+			items.clear();
+			
+			for (int index = 0; index < length; index++) {
+				Purchase p = purchasecollection.getByIndex(index);
+				// call toString for each individual purchase
+				p.toString();
+				items.add(p);
+				listViewItems.setItems(items);
 			}
-			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}	
 	}
-
+	
 	@FXML
 	protected void handleSaveAsMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();

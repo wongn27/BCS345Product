@@ -1,21 +1,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
 	fx:controller="wong.bcs345.hwk.purchases.presentation.PurchasesController">
 	<children>
 		<VBox>
+		
 			<MenuBar>
 				<menus>
 					<Menu text="File">
 						<items>
-							<MenuItem fx:id = "openMenuItem" text="Open..." onAction = "#handleOpenMenuItemAction" />
+							<MenuItem fx:id="openMenuItem" text="Open..."
+								onAction="#handleOpenMenuItemAction" />
 							<SeparatorMenuItem />
-							<MenuItem fx:id = "saveAsMenuItem" text="Save As..." onAction = "#handleSaveAsMenuItemAction" />
-							<MenuItem fx:id = "saveReportMenuItem" text="Save Report..." onAction = "#handleSaveReportMenuItemAction" />
+							<MenuItem fx:id="saveAsMenuItem" text="Save As..."
+								onAction="#handleSaveAsMenuItemAction" />
+							<MenuItem fx:id="saveReportMenuItem"
+								text="Save Report..." onAction="#handleSaveReportMenuItemAction" />
 							<SeparatorMenuItem />
-							<MenuItem fx:id = "exitMenuItem" text="Exit" onAction = "#handleExitMenuItemAction" />
+							<MenuItem fx:id="exitMenuItem" text="Exit"
+								onAction="#handleExitMenuItemAction" />
 						</items>
 					</Menu>
 				</menus>
@@ -55,12 +61,12 @@
 							</HBox>
 						</VBox>
 					</Tab>
-	
 					<Tab text="Purchases">
+						<ListView fx:id="listViewItems"></ListView>
 					</Tab>
 				</tabs>
 			</TabPane>
-		
+			
 		</VBox>
 	</children>
 </AnchorPane>
