@@ -40,22 +40,22 @@ public class PurchasesController {
 
 	@FXML
 	private TextField firstNameTextField;
-	
+
 	@FXML
 	private TextField lastNameTextField;
-	
+
 	@FXML
 	private TextField numberTextField;
-	
+
 	@FXML
 	private TextField streetTextField;
-	
+
 	@FXML
 	private TextField cityTextField;
-	
+
 	@FXML
 	private TextField stateTextField;
-	
+
 	@FXML
 	private TextField zipTextField;
 
@@ -70,100 +70,72 @@ public class PurchasesController {
 
 	@FXML
 	private MenuItem exitMenuItem;
-	
-	@FXML 
+
+	@FXML
 	private ListView<Purchase> listViewItems = new ListView<>();
 
-	@FXML
-	protected void populateFirstNameTextField() {
-		String firstName = purchasecollection.getCustomer().getFirst();
-		firstNameTextField.setText(firstName);
-	}
-	
-	@FXML 
-	protected void populateLastNameTextField() {
-		String lastName = purchasecollection.getCustomer().getLast();
-		lastNameTextField.setText(lastName);
-	}
-	
-	@FXML
-	protected void populateNumberTextField() {
-		String number = purchasecollection.getCustomer().getAddress().getNumber();
-		numberTextField.setText(number);
+	private void populateTextField(String textFieldString, TextField textField) {
+		textField.setText(textFieldString);
 	}
 
-	@FXML
-	protected void populateStreetTextField() {
-		String street = purchasecollection.getCustomer().getAddress().getStreet();
-		streetTextField.setText(street);
+	private void populateCustomer() {
+		populateTextField(purchasecollection.getCustomer().getFirst(), firstNameTextField);
+		populateTextField(purchasecollection.getCustomer().getLast(), lastNameTextField);
+		populateTextField(purchasecollection.getCustomer().getAddress().getNumber(), numberTextField);
+		populateTextField(purchasecollection.getCustomer().getAddress().getStreet(), streetTextField);
+		populateTextField(purchasecollection.getCustomer().getAddress().getCity(), cityTextField);
+		populateTextField(purchasecollection.getCustomer().getAddress().getState(), stateTextField);
+		populateTextField(purchasecollection.getCustomer().getAddress().getZip(), zipTextField);
 	}
-	
-	@FXML
-	protected void populateCityTextField() {
-		String city = purchasecollection.getCustomer().getAddress().getCity();
-		cityTextField.setText(city);
-	}
-	
-	@FXML
-	protected void populateStateTextField() {
-		String state = purchasecollection.getCustomer().getAddress().getState();
-		stateTextField.setText(state);
-	}
-	
-	@FXML
-	protected void populateZipTextField() {
-		String zip = purchasecollection.getCustomer().getAddress().getZip();
-		zipTextField.setText(zip);
-	}
-	
-	// fix cancel button and return to window
+
 	@FXML
 	protected void handleOpenMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Open PurchaseCollection File");
-		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
+		filechooser.setInitialDirectory(new File(System.getProperty("user.dir")));
 		File selectedFile = filechooser.showOpenDialog(new Stage());
-		
+
 		try {
+			if (selectedFile == null) {
+				return;
+			}
+
 			Scanner fileScanner = new Scanner(new FileReader(selectedFile));
 			purchasecollection.Read(fileScanner);
-			populateFirstNameTextField();
-			populateLastNameTextField();
-			populateNumberTextField();
-			populateStreetTextField();
-			populateCityTextField();
-			populateStateTextField();
-			populateZipTextField();
-			
+			populateCustomer();
+
 			int length = purchasecollection.getPurchaseArrayLength();
-			
-	        // get the observable list from the listview
-			ObservableList<Purchase> items = FXCollections.observableArrayList(); // change getPurchases to whatever functions get one purchase
-			
-			// clear list
-			items.clear();
-			
+
+			ObservableList<Purchase> itemsObservableList = FXCollections.observableArrayList(); 
+																								
+			// clear listView
+			listViewItems.getItems().clear();
+
 			for (int index = 0; index < length; index++) {
-				Purchase p = purchasecollection.getByIndex(index);
-				// call toString for each individual purchase
-				p.toString();
-				items.add(p);
-				listViewItems.setItems(items);
+				Purchase purchase = purchasecollection.getByIndex(index);
+				itemsObservableList.add(purchase);
 			}
+
+			listViewItems.setItems(itemsObservableList);
+
 		} catch (Exception exception) {
 			exception.printStackTrace();
-		}	
+		}
 	}
-	
+
 	@FXML
 	protected void handleSaveAsMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Save As PurchaseCollection");
-		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
-		File fileName = filechooser.showSaveDialog(new Stage());
-		
+		filechooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+		File selectedFile = filechooser.showSaveDialog(new Stage());
+
 		try {
-			PrintStream saveFile = new PrintStream(fileName);
+			if (selectedFile == null) {
+				return;
+			}
+
+			PrintStream saveFile = new PrintStream(selectedFile);
 			purchasecollection.Write(saveFile);
 		} catch (Exception exception) {
 			exception.printStackTrace();
@@ -174,11 +146,15 @@ public class PurchasesController {
 	protected void handleSaveReportMenuItemAction(ActionEvent event) {
 		FileChooser filechooser = new FileChooser();
 		filechooser.setTitle("Save PurchaseCollection Report");
-		filechooser.setInitialDirectory(new File ("C:\\Users\\wongn\\OneDrive\\Documents\\Java\\Hoskeyhw\\wong.bcs345.hwk.purchases.presentation"));
-		File fileName = filechooser.showSaveDialog(new Stage());
+		filechooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+		File selectedFile = filechooser.showSaveDialog(new Stage());
 
 		try {
-			PrintStream saveReport = new PrintStream(fileName);
+			if (selectedFile == null) {
+				return;
+			}
+
+			PrintStream saveReport = new PrintStream(selectedFile);
 			purchasecollection.Report(saveReport);
 		} catch (Exception exception) {
 			exception.printStackTrace();
